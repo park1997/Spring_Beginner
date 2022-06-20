@@ -35,18 +35,25 @@ public class HelloController {
     }
 
     // API 방식 2
-//    @GetMapping("hello-api")
-//    @ResponseBody
-
+    // Json 방식으로 Data가 전송됨
+    @GetMapping("hello-api")
+    @ResponseBody   // 보통 ResponseBody하면 Json방식으로 해주는게 옳음. 요즘 트렌드고 표준임
+    public Hello helloApi(@RequestParam("name") String name) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello; // 객체가 Return 되면 객체를 Json스타일로 넘김
+    }
 
     static class Hello {
         private String name;
 
-        
+        public String getName() {
+            return name;
+        }
 
-
-
-
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
 }
