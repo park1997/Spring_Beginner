@@ -9,10 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
+// TDD란?
+// Test 주도 개발 이라고해서 테스트를 먼저만들고 구현클래스를 만들어서 검증함
+
 // 모든테스트는 순서가 보장이 안됨
 // 모든테스트는 순서와 관계 없이 서로가 의존하면 안됨
 // 따라서 테스트가 끝나면 모두 다 지워줘야함
-
 class MemoryMemberRopositoryTest {
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
