@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="container">
+<!--        Controller의 members/new를 가진 Postmapping으로 들어옴-->
+        <form action="/members/new" method="post">
+
+            <div class="form-group">
+                <label for="name">이름</label>
+
+<!--                MemberForm class에 MyName이라는 변수에 입력값을 전달하게됨-->
+                <input type="text" id="name" name="myName" placeholder="이름을입력하세요">
+
+            </div>
+        <button type="submit">등록</button> </form>
+    </div> <!-- /container -->
+</body>
+</html>
