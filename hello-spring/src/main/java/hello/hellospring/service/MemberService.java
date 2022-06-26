@@ -5,6 +5,7 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -18,13 +19,13 @@ MemoryMemberRepository는 단순히 데이터를 저장 조회 등과 같음
 // Command + shift + T 하면은 자동으로 테스트 코드파일이 생성된다.
 
 // Service Class를 Spring Cotainer에 올려준다.
-
+@Transactional
 public class MemberService {
     // final이 붙어있으면 값을 생성자에서 초기화 한 이후에 변경 할 수 없다.
     private final MemberRepository memberRepository;
 
 
-    public MemberService(MemoryMemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 

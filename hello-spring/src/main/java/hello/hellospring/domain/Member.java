@@ -1,7 +1,16 @@
 package hello.hellospring.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // 실제 DB에 컬럼은 오른쪽 문자열 "name"이다! 라고 매핑해주는거임
+    @Column(name = "name")
     private String name;
 
     public Long getId() {

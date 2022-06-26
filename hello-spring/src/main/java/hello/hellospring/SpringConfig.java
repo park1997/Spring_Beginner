@@ -1,9 +1,14 @@
 package hello.hellospring;
 
-import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.EntityManager;
+import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 
 /*
 1. 맴버서비스랑 맴버리포지토리를 둘다 스프링 빈에 등록함
@@ -12,14 +17,41 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringConfig {
 
-    @Bean
-    public MemberService memberService() {
-        return new MemberService(memoryMemberRepository());
+//    private final DataSource dataSource;
+//    private EntityManager em;
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
+
+
+
+    //    @Autowired
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
+
     @Bean
-    public MemoryMemberRepository memoryMemberRepository() {
-        return new MemoryMemberRepository();
+    public MemberService memberService() {
+        return new MemberService(memberRepository);
     }
+
+//    @Bean
+//    public MemoryMemberRepository memoryMemberRepository() {
+////        return new MemoryMemberRepository();
+////        return new JdbcMemberRepository(dataSource);
+////        return new JdbcTemplateMemberRepository(dataSource);
+////        return new JpaMemberRepository(em);
+//    }
+
 
 }
